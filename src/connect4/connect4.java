@@ -1,15 +1,44 @@
 package connect4;
-
+import java.util.*;
 public class connect4 {
+	
+	private static final int ROW = 6;	
+	private static final int COLUMN = 7;
+	private static final String nome1 = "Mario";
+	private static final String nome2 = "Luca";
 	
 	public static void main (String[] args) {
 		
 	
-		System.out.println("Baciamo le mani"); /** La documentazione */
+		System.out.println("Baciamo le mani " + args[1] + " !" ); /** La documentazione */
+		Matrix campoGioco = new Matrix (ROW,COLUMN);
+	//	Matrix campoGioco = new Matrix(ROW, COLUMN);
+		campoGioco.riempiCampo(ROW,COLUMN);
+		campoGioco.stampaCampo(ROW,COLUMN);
 		
-		new Matrix.
-		Matrix.matrix(ROW,COLUMN);
+		Player Player1 = new Player (nome1);
+		System.out.println("Baciamo le mani " + Player1.nome + " !" ); /** La documentazione */
 		
+		Player1.setSymbol('X');
+		System.out.println(Player1.nome + ", il tuo simbolo è " + Player1.symbol ); /** La documentazione */
+		
+		
+		Player Player2 = new Player (nome2);
+		System.out.println("Baciamo le mani " + Player2.nome + " !" ); /** La documentazione */		
+		
+		Player2.setSymbol('@');
+		System.out.println(Player2.nome + ", il tuo simbolo è " + Player2.symbol ); /** La documentazione */
+//	for i in
+	Scanner toro = new Scanner(System.in);
+	Player1.nome = toro.nextLine();
+	
+	System.out.println("Baciamo le mani " + Player1.nome + " !" ); /** La documentazione */
+	
+	Player2.nome = toro.nextLine();
+	
+	System.out.println("Baciamo le mani " + Player2.nome + " !" ); /** La documentazione */
+	toro.close();
+	
 	}
 
 }
