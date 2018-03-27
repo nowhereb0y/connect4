@@ -1,46 +1,96 @@
 package connect4;
 import java.util.*;
+
 public class connect4 {
 	
 	private static final int ROW = 6;	
 	private static final int COLUMN = 7;
-	private static final String nome1 = "Mario";
-	private static final String nome2 = "Luca";
 	
 	public static void main (String[] args) {
 		
+		stampaBannerAvvio();
+		System.out.println("Benvenuti in Forza 4 " + args[1] + " !" ); /** La documentazione */
+
+		Matrix campoGioco = new Matrix (ROW,COLUMN);	//* istanzio la Matrice che userò come campo da gioco */
 	
-		System.out.println("Baciamo le mani " + args[1] + " !" ); /** La documentazione */
-		Matrix campoGioco = new Matrix (ROW,COLUMN);
-	//	Matrix campoGioco = new Matrix(ROW, COLUMN);
-		campoGioco.riempiCampo(ROW,COLUMN);
-		campoGioco.stampaCampo(ROW,COLUMN);
+		campoGioco.riempiCampo();				//* chiamo il metodo per riempire la matrice */
+		campoGioco.stampaCampo();				//* chiamo il metodo per stampare la matrice */
 		
-		Player Player1 = new Player (nome1);
-		System.out.println("Baciamo le mani " + Player1.nome + " !" ); /** La documentazione */
+		Scanner input = new Scanner(System.in);
 		
+		System.out.println("\t\t Giocatore 1, inserisci il tuo nome: ");
+		
+		Player Player1 = new Player (input.nextLine());			//Istanzio il giocatore 1
+		System.out.println("\t\t\nBenvenuto " + Player1.getNome() + " !\n" ); /** La documentazione */
 		Player1.setSymbol('X');
-		System.out.println(Player1.nome + ", il tuo simbolo è " + Player1.symbol ); /** La documentazione */
+		System.out.println(Player1.getNome() + ", il tuo simbolo è " + Player1.getSymbol() ); /** La documentazione */
+		Player1.setVittorie(0);
 		
+		System.out.println("\t\t Giocatore 2, inserisci il tuo nome: ");
 		
-		Player Player2 = new Player (nome2);
-		System.out.println("Baciamo le mani " + Player2.nome + " !" ); /** La documentazione */		
-		
+		Player Player2 = new Player (input.nextLine());
+		System.out.println("\t\t\nBenvenuto " + Player2.getNome() + " !" ); /** La documentzione */				
 		Player2.setSymbol('@');
-		System.out.println(Player2.nome + ", il tuo simbolo è " + Player2.symbol ); /** La documentazione */
-//	for i in
-	Scanner toro = new Scanner(System.in);
-	Player1.nome = toro.nextLine();
-	
-	System.out.println("Baciamo le mani " + Player1.nome + " !" ); /** La documentazione */
-	
-	Player2.nome = toro.nextLine();
-	
-	System.out.println("Baciamo le mani " + Player2.nome + " !" ); /** La documentazione */
-	toro.close();
-	
+		System.out.println(Player2.getNome() + ", il tuo simbolo è " + Player2.getSymbol() ); /** La documentazione */
+		Player2.setVittorie(0);
+		
+		input.close();
+		
+		System.out.println( Player1.getNome() + ", Inserisci un numero da 1 a " +COLUMN); /** La documentzione */	
+		Scanner input1 = new Scanner(System.in);
+		chiediMossa(Player1.getNome(), input1.nextLine(),campoGioco);
+		
+		
+		
+	stampaBannerVittoria();
 	}
 
+	private int chiediMossa(String Nome, String userInput, Matrix campoGioco) 
+	{
+		int ncol;
+		do {
+			System.out.println(Nome + "scegli la colonna dove inserire la pedina");
+			if (campoGioco[1][1] == ' ')
+					
+			
+			
+			
+		}
+		
+		return ncol;
+	}
+	
+	
+	
+	
+	
+	private static void stampaBannerAvvio() 
+	{
+		System.out.println("\t\t _______ _______ _______ _______ _______     _______     _______ _______ ");
+		System.out.println("\t\t|\\     /|\\     /|\\     /|\\     /|\\     /|   |\\     /|   |\\     /|\\     /|");
+		System.out.println("\t\t| +---+ | +---+ | +---+ | +---+ | +---+ |   | +---+ |   | +---+ | +---+ |");
+		System.out.println("\t\t| |   | | |   | | |   | | |   | | |   | |   | |   | |   | |   | | |   | |");
+		System.out.println("\t\t| |F  | | |O  | | |R  | | |Z  | | |A  | |   | |4  | |   | |!  | | |!  | |");
+		System.out.println("\t\t| +---+ | +---+ | +---+ | +---+ | +---+ |   | +---+ |   | +---+ | +---+ |");
+		System.out.println("\t\t|/_____\\|/_____\\|/_____\\|/_____\\|/_____\\|   |/_____\\|   |/_____\\|/_____\\|");
+
+		System.out.println("\n\n");
+		System.out.println("\t\tBenvenuti nel gioco Forza 4!\n");
+		System.out.println("\t\tLo scopo del gioco è quello di allineare 4 pedine in orizzontale, verticale o in una delle due diagonali\n");
+		System.out.println("\t\tBuon divertimento!\n\n");
+	}
+	
+	private static void stampaBannerVittoria() 
+	{
+		System.out.println(" _______ _______ _______     _______ _______ _______ _______ _______     _______ ");
+		System.out.println("|\\     /|\\     /|\\     /|   |\\     /|\\     /|\\     /|\\     /|\\     /|   |\\     /|");
+		System.out.println("| +---+ | +---+ | +---+ |   | +---+ | +---+ | +---+ | +---+ | +---+ |   | +---+ |");
+		System.out.println("| |   | | |   | | |   | |   | |   | | |   | | |   | | |   | | |   | |   | |   | |");
+		System.out.println("| |H  | | |A  | | |I  | |   | |V  | | |I  | | |N  | | |T  | | |O  | |   | |!  | |");
+		System.out.println("| +---+ | +---+ | +---+ |   | +---+ | +---+ | +---+ | +---+ | +---+ |   | +---+ |");
+		System.out.println("|/_____\\|/_____\\|/_____\\|   |/_____\\|/_____\\|/_____\\|/_____\\|/_____\\|   |/_____\\|");
+		System.out.println("\n\n\n\n");
+	}
 }
 
 
