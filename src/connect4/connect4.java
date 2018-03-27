@@ -5,7 +5,7 @@ public class connect4 {
 	
 	private static final int ROW = 6;	
 	private static final int COLUMN = 7;
-	
+	static int ncol;
 	public static void main (String[] args) {
 		
 		stampaBannerAvvio();
@@ -34,31 +34,48 @@ public class connect4 {
 		System.out.println(Player2.getNome() + ", il tuo simbolo è " + Player2.getSymbol() ); /** La documentazione */
 		Player2.setVittorie(0);
 		
+		int prova=input.nextInt();
+		System.out.println(prova);
 		input.close();
 		
-		System.out.println( Player1.getNome() + ", Inserisci un numero da 1 a " +COLUMN); /** La documentzione */	
-		Scanner input1 = new Scanner(System.in);
-		chiediMossa(Player1.getNome(), input1.nextLine(),campoGioco);
+
+		chiediMossa(Player1.getNome(), campoGioco );
 		
 		
 		
 	stampaBannerVittoria();
 	}
 
-	private int chiediMossa(String Nome, String userInput, Matrix campoGioco) 
+	public static int chiediMossa(String Nome, Matrix campoGioco) 
 	{
-		int ncol;
-		do {
-			System.out.println(Nome + "scegli la colonna dove inserire la pedina");
-			if (campoGioco[1][1] == ' ')
-					
-			
-			
-			
-		}
 		
+		
+		do {
+			//int mcol;
+			campoGioco.stampaCampo();
+			System.out.println(Nome + "scegli la colonna dove inserire la pedina: ");
+			Scanner inputMossa = new Scanner(System.in);
+			String appo = inputMossa.nextLine();
+			System.out.println(appo);
+			
+			if((ncol<1) || (ncol >(COLUMN))) //verifico che l'utente non inserisca un valore fuori dal campo di gioco
+			{
+				System.out.println("  Scelta errata, la posizione è fuori dalla griglia!\n");
+
+			}
+			else if(campoGioco.matrix[0][ncol-1] != ' ') //verifico che la colonna selezionata non sia piena
+			{
+				System.out.println("  La colonna selezionata è piena! Ripeti la selezione. \n");
+			}
+			inputMossa.close();
+		
+		}
+			while ((ncol < 1) || (ncol > COLUMN) || (campoGioco.matrix[0][ncol-1] != ' ') );
+			
+			
 		return ncol;
-	}
+	}	
+	
 	
 	
 	
