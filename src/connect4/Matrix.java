@@ -5,7 +5,7 @@ public class Matrix {
 	private int ROW;	//definisco le variabili this.ROW e this.COLUMN che utilizzo per costruire la matrice
 	private int COLUMN;
 
-	public char[][] matrix;
+	private char[][] matrix;
 	
 	Matrix(int ROW , int COLUMN) //definisco la matrice 
 	{
@@ -14,26 +14,25 @@ public class Matrix {
 		this.COLUMN=COLUMN;
 	}
 	
+	
 	public char[][] getMatrix() {
 		return this.matrix;
 	}
 	
+	
 	public void riempiCampo()
-//	public void riempiCampo(matrix[][])
-	
-		
-	
 	
 	{
 		int i,j;
 		for (i=0;i<this.ROW;i++)
 		{
 			for (j=0;j<this.COLUMN;j++)
-				matrix[i][j]=' ';
-			
-		}
-		
+				matrix[i][j]=' ';	
+		}	
 	}
+	
+	
+	
 	public void stampaCampo()
 	{
 		int i,j;
@@ -61,10 +60,8 @@ public class Matrix {
     			this.matrix[i][mossaplayer-1] = simbolo;
 
     			i=-1;
-
     		}
-		}
-		
+		}	
 	}
 	
 	
@@ -84,7 +81,6 @@ public class Matrix {
 							//System.out.println("\n\nVITTORIA ORIZZONTALE per %s!!!! \n", p1->nome );
 							ritorno=1;
 						}
-
 				}
 			}
 		//Chech verticale
@@ -105,7 +101,6 @@ public class Matrix {
 			for (j=0; j<this.COLUMN-3;j++)
 				{
 					if ( this.matrix[i][j]==simbolo && this.matrix[i+1][j+1]==simbolo && this.matrix[i+2][j+2]==simbolo && this.matrix[i+3][j+3]==simbolo) //oltre a verificare che ci siano le 4 pedine allineate diagonalmente verifico che l'incremento  di riga e colonna non sia eccessivo
-
 						{
 							//System.out.println("\n\nVITTORIA DIAGONALE DECRESCENTE per %s!!!! \n", p1->nome);
 							ritorno=3;
@@ -119,11 +114,8 @@ public class Matrix {
 			{
 			for (j=0; j<this.COLUMN-3;j++)
 				{
-
-
 					 if (this.matrix[i][j]==simbolo && this.matrix[(i-1)][j+1]==simbolo && this.matrix[i-2][j+2]==simbolo && this.matrix[i-3][j+3]==simbolo) //oltre a verificare che ci siano le 4 pedine allineate diagonalmente verifico che l'incremento o la sottrazione  di riga e colonna non sia eccessivo
 						{
-
 							//System.out.println("\n\nVITTORIA DIAGONALE CRESCENTE per %s!!!!\n");
 							ritorno=4;
 						}
@@ -131,4 +123,5 @@ public class Matrix {
 			} 
 	return ritorno;	
 	}
+	
 }
