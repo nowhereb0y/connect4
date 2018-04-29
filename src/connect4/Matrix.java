@@ -15,12 +15,13 @@ public class Matrix {
 	}
 	
 	
-	public char[][] getMatrix() {
+	public char[][] getMatrix() //definisco il getter
+	{ 
 		return this.matrix;
 	}
 	
 	
-	public void riempiCampo()
+	public void riempiCampo()	//definisco il metodo che inizializza il campo di gioco
 	
 	{
 		int i,j;
